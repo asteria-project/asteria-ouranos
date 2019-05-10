@@ -1,0 +1,30 @@
+{
+  "name": "asteria-ouranos",
+  "version": "0.1.0",
+  "description": "Ouranos is the default implementation of the Asteria Project for JavaScript implementations.",
+  "main": "dist/com/asteria/ouranos.index.js",
+  "types": "types/ouranos.d.ts",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "author": "Pascal ECHEMANN",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/asteria-ouranos/asteria-ouranos/issues"
+  },
+  "homepage": "https://github.com/asteria-ouranos/asteria-ouranos#readme",
+  "dependencies": {
+    "asteria-gaia": "^0.1.0",
+    "ts-log-debug": "^5.1.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.0",
+    "@types/uuid": "^3.4.4",
+    "grunt": "^1.0.4",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-ts": "^6.0.0-beta.22",
+    "typescript": "^3.4.5"
+  }
+}

@@ -34,4 +34,5 @@ export { OuranosErrorBuilder } from './ouranos/util/builder/OuranosErrorBuilder'
 export { OuranosProcessBuilder } from './ouranos/util/builder/OuranosProcessBuilder';
 
 //--> com/asteria/ouranos/util/logging
+export { LogIdUtils } from './ouranos/util/logging/LogIdUtils';
 export { OuranosLogger } from './ouranos/util/logging/OuranosLogger';

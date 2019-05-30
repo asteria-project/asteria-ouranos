@@ -1,6 +1,7 @@
 import { AbstractAsteriaObject, StreamProcessor, StreamProcess, AsteriaLogger, AsteriaStream, CommonChar } from 'asteria-gaia';
 import { OuranosContext } from '../core/OuranosContext';
 import { pipeline } from 'stream';
+import { LogIdUtils } from '../util/logging/LogIdUtils';
 
 /**
  * The <code>OuranosProcessor</code> class is the default implementation fo the <code>StreamProcessor</code> interface.
@@ -13,14 +14,14 @@ export class OuranosProcessor extends AbstractAsteriaObject implements StreamPro
     private readonly CONTEXT: OuranosContext;
 
     /**
+     * The referece of the Ouranos context log id associated with this processor.
+     */
+    private readonly LOG_ID: string;
+
+    /**
      * The list of <code>StreamProcess</code> objects registered whithin this processor.
      */
     private readonly PROCESSES: Array<StreamProcess> = new Array<StreamProcess>();
-
-    /**
-     * The list of <code>AsteriaStream</code> objects registered whithin this processor.
-     */
-    private _streams: Array<AsteriaStream> = null;
 
     /**
      * Stores the global data processing start time.
@@ -35,6 +36,7 @@ export class OuranosProcessor extends AbstractAsteriaObject implements StreamPro
     constructor(context: OuranosContext) {
         super('com.asteria.ouranos.process::OuranosProcessor');
         this.CONTEXT = context;
+        this.LOG_ID = LogIdUtils.getLogId(this.CONTEXT);
     }
 
     /**
@@ -43,7 +45,7 @@ export class OuranosProcessor extends AbstractAsteriaObject implements StreamPro
     public add(process: StreamProcess): StreamProcessor {
         const logger: AsteriaLogger = this.CONTEXT.getLogger();
         this.PROCESSES.push(process);
-        logger.info(`stream process added to session processor: ${process.getClassName() }`);
+        logger.info(`${this.LOG_ID} stream process added to session processor: ${process.getClassName() }`);
         return this;
     }
 
@@ -62,10 +64,9 @@ export class OuranosProcessor extends AbstractAsteriaObject implements StreamPro
         this._timestamp = Date.now();
         const logger: AsteriaLogger = this.CONTEXT.getLogger();
         const length: number = this.PROCESSES.length;
-        logger.info('asteria processing start');
-        logger.info(`streaming ${length} process${ length !== 1 ? 'es' : CommonChar.EMPTY}`);
+        logger.info(`${this.LOG_ID} asteria processing start`);
+        logger.info(`${this.LOG_ID} streaming ${length} process${ length !== 1 ? 'es' : CommonChar.EMPTY}`);
         let i: number = 0;
-        this._streams = new Array<AsteriaStream>(length);
         const streams: Array<any> = new Array<any>();
         let stream: any = null;
         for (; i <= length - 1; ++i) {
@@ -86,9 +87,9 @@ export class OuranosProcessor extends AbstractAsteriaObject implements StreamPro
     private onprocessComplete(err: any): void {
         if (!err) {
             const completeTs: number = Date.now() - this._timestamp;
-            this.CONTEXT.getLogger().info(`asteria processing completed in ${completeTs} ms`);
+            this.CONTEXT.getLogger().info(`${this.LOG_ID} asteria processing completed in ${completeTs} ms`);
         } else {
-            this.CONTEXT.getLogger().fatal(`asteria processingfailed: ${err.toString()}`);
+            this.CONTEXT.getLogger().fatal(`${this.LOG_ID} asteria processing failed: ${err.toString()}`);
         }
     }
     

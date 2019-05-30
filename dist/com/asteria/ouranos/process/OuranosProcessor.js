@@ -2,18 +2,19 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const asteria_gaia_1 = require("asteria-gaia");
 const stream_1 = require("stream");
+const LogIdUtils_1 = require("../util/logging/LogIdUtils");
 class OuranosProcessor extends asteria_gaia_1.AbstractAsteriaObject {
     constructor(context) {
         super('com.asteria.ouranos.process::OuranosProcessor');
         this.PROCESSES = new Array();
-        this._streams = null;
         this._timestamp = 0;
         this.CONTEXT = context;
+        this.LOG_ID = LogIdUtils_1.LogIdUtils.getLogId(this.CONTEXT);
     }
     add(process) {
         const logger = this.CONTEXT.getLogger();
         this.PROCESSES.push(process);
-        logger.info(`stream process added to session processor: ${process.getClassName()}`);
+        logger.info(`${this.LOG_ID} stream process added to session processor: ${process.getClassName()}`);
         return this;
     }
     remove(process) {
@@ -24,10 +25,9 @@ class OuranosProcessor extends asteria_gaia_1.AbstractAsteriaObject {
         this._timestamp = Date.now();
         const logger = this.CONTEXT.getLogger();
         const length = this.PROCESSES.length;
-        logger.info('asteria processing start');
-        logger.info(`streaming ${length} process${length !== 1 ? 'es' : asteria_gaia_1.CommonChar.EMPTY}`);
+        logger.info(`${this.LOG_ID} asteria processing start`);
+        logger.info(`${this.LOG_ID} streaming ${length} process${length !== 1 ? 'es' : asteria_gaia_1.CommonChar.EMPTY}`);
         let i = 0;
-        this._streams = new Array(length);
         const streams = new Array();
         let stream = null;
         for (; i <= length - 1; ++i) {
@@ -42,10 +42,10 @@ class OuranosProcessor extends asteria_gaia_1.AbstractAsteriaObject {
     onprocessComplete(err) {
         if (!err) {
             const completeTs = Date.now() - this._timestamp;
-            this.CONTEXT.getLogger().info(`asteria processing completed in ${completeTs} ms`);
+            this.CONTEXT.getLogger().info(`${this.LOG_ID} asteria processing completed in ${completeTs} ms`);
         }
         else {
-            this.CONTEXT.getLogger().fatal(`asteria processingfailed: ${err.toString()}`);
+            this.CONTEXT.getLogger().fatal(`${this.LOG_ID} asteria processing failed: ${err.toString()}`);
         }
     }
     getProcessIndex(process) {

@@ -41,7 +41,7 @@ export class OuranosLogger extends AbstractAsteriaObject implements AsteriaLogge
     }
 
     /**
-     * Returns the reference to this logger.
+     * Return the reference to this logger.
      * 
      * @returns {AsteriaLogger} the reference to this logger.
      */

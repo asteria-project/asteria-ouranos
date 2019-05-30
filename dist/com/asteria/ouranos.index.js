@@ -32,5 +32,7 @@ var OuranosErrorBuilder_1 = require("./ouranos/util/builder/OuranosErrorBuilder"
 exports.OuranosErrorBuilder = OuranosErrorBuilder_1.OuranosErrorBuilder;
 var OuranosProcessBuilder_1 = require("./ouranos/util/builder/OuranosProcessBuilder");
 exports.OuranosProcessBuilder = OuranosProcessBuilder_1.OuranosProcessBuilder;
+var LogIdUtils_1 = require("./ouranos/util/logging/LogIdUtils");
+exports.LogIdUtils = LogIdUtils_1.LogIdUtils;
 var OuranosLogger_1 = require("./ouranos/util/logging/OuranosLogger");
 exports.OuranosLogger = OuranosLogger_1.OuranosLogger;

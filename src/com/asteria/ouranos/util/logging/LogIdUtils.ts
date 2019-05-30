@@ -14,6 +14,6 @@ export class LogIdUtils  {
      * @returns {string} the log id string for the specified context.
      */
     public static getLogId(context: OuranosContext): string {
-        return `[id:${context.getId}]`;
+        return `[id:${context.getId()}]`;
     }
 }

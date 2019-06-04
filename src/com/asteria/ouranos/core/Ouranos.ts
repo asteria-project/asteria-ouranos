@@ -39,7 +39,7 @@ export class Ouranos extends AbstractAsteriaObject {
      * @param {any} processClass the type of the new <code>StreamProcess</code> object.
      * @param {StreamProcessConfig} config the config associated with the new <code>StreamProcess</code> object. 
      * 
-     * @return {StreamProcess} a new <code>StreamProcess</code> object.
+     * @returns {StreamProcess} a new <code>StreamProcess</code> object.
      */
     public static buildProcess(processClass: any, config?: StreamProcessConfig): StreamProcess {
         return OuranosProcessBuilder.getInstance().build(processClass, config);

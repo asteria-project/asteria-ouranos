@@ -31,7 +31,7 @@ export class OuranosErrorBuilder extends AbstractAsteriaObject {
      * 
      * @param {AsteriaErrorCode} code the error code for this <code>AsteriaError</code> instance.
      * 
-     * @return {AsteriaError} a new <code>AsteriaError</code> instance.
+     * @returns {AsteriaError} a new <code>AsteriaError</code> instance.
      */
     public build(code: AsteriaErrorCode, className: string, message: string, stack?: string): AsteriaError {
         const error: AsteriaError = new AsteriaError(code, className, message, stack);

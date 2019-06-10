@@ -26,17 +26,27 @@ class OuranosProcessor extends asteria_gaia_1.AbstractAsteriaObject {
         const logger = this.CONTEXT.getLogger();
         const length = this.PROCESSES.length;
         logger.info(`${this.LOG_ID} asteria processing start`);
+        if (length === 0) {
+            logger.fatal(`${this.LOG_ID} asteria processing error: no streaming process is defined`);
+            throw new asteria_gaia_1.AsteriaException(asteria_gaia_1.AsteriaErrorCode.INVALID_PARAMETER, 'No streaming process is defined!');
+        }
         logger.info(`${this.LOG_ID} streaming ${length} process${length !== 1 ? 'es' : asteria_gaia_1.CommonChar.EMPTY}`);
         let i = 0;
         const streams = new Array();
         let stream = null;
-        for (; i <= length - 1; ++i) {
-            const streamProcess = this.PROCESSES[i];
-            stream = streamProcess.create(this.CONTEXT);
-            streams.push(stream);
+        if (length > 1) {
+            for (; i <= length - 1; ++i) {
+                const streamProcess = this.PROCESSES[i];
+                stream = streamProcess.create(this.CONTEXT);
+                streams.push(stream);
+            }
+            streams.push(this.onprocessComplete.bind(this));
+            stream_1.pipeline.apply(this, streams);
         }
-        streams.push(this.onprocessComplete.bind(this));
-        stream_1.pipeline.apply(this, streams);
+        else {
+            stream = this.PROCESSES[i].create(this.CONTEXT);
+            stream.on('close', this.onprocessComplete.bind(this));
+        }
         return stream;
     }
     onprocessComplete(err) {

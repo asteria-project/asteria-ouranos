@@ -1,4 +1,4 @@
-import { AbstractAsteriaObject, StreamProcessor, StreamProcess, AsteriaLogger, AsteriaStream, CommonChar } from 'asteria-gaia';
+import { AbstractAsteriaObject, StreamProcessor, StreamProcess, AsteriaLogger, AsteriaStream, CommonChar, AsteriaException, AsteriaErrorCode } from 'asteria-gaia';
 import { OuranosContext } from '../core/OuranosContext';
 import { pipeline } from 'stream';
 import { LogIdUtils } from '../util/logging/LogIdUtils';
@@ -65,17 +65,26 @@ export class OuranosProcessor extends AbstractAsteriaObject implements StreamPro
         const logger: AsteriaLogger = this.CONTEXT.getLogger();
         const length: number = this.PROCESSES.length;
         logger.info(`${this.LOG_ID} asteria processing start`);
+        if (length === 0) {
+            logger.fatal(`${this.LOG_ID} asteria processing error: no streaming process is defined`);
+            throw new AsteriaException(AsteriaErrorCode.INVALID_PARAMETER, 'No streaming process is defined!');
+        }
         logger.info(`${this.LOG_ID} streaming ${length} process${ length !== 1 ? 'es' : CommonChar.EMPTY}`);
         let i: number = 0;
         const streams: Array<any> = new Array<any>();
         let stream: any = null;
-        for (; i <= length - 1; ++i) {
-            const streamProcess: StreamProcess = this.PROCESSES[i];
-            stream = streamProcess.create(this.CONTEXT);
-            streams.push(stream);
+        if (length > 1) {
+            for (; i <= length - 1; ++i) {
+                const streamProcess: StreamProcess = this.PROCESSES[i];
+                stream = streamProcess.create(this.CONTEXT);
+                streams.push(stream);
+            }
+            streams.push(this.onprocessComplete.bind(this));
+            (pipeline as Function).apply(this, streams);
+        } else {
+            stream = this.PROCESSES[i].create(this.CONTEXT);
+            stream.on('close', this.onprocessComplete.bind(this));
         }
-        streams.push(this.onprocessComplete.bind(this));
-        (pipeline as Function).apply(this, streams);
         return stream;
     }
 

@@ -67,7 +67,7 @@ export class OuranosProcessor extends AbstractAsteriaObject implements StreamPro
         logger.info(`${this.LOG_ID} asteria processing start`);
         if (length === 0) {
             logger.fatal(`${this.LOG_ID} asteria processing error: no streaming process is defined`);
-            throw new AsteriaException(AsteriaErrorCode.INVALID_PARAMETER, 'No streaming process is defined!');
+            throw new AsteriaException(AsteriaErrorCode.PROCESS_FAILURE, 'No streaming process is defined!');
         }
         logger.info(`${this.LOG_ID} streaming ${length} process${ length !== 1 ? 'es' : CommonChar.EMPTY}`);
         let i: number = 0;

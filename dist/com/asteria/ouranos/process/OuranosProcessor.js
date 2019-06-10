@@ -28,7 +28,7 @@ class OuranosProcessor extends asteria_gaia_1.AbstractAsteriaObject {
         logger.info(`${this.LOG_ID} asteria processing start`);
         if (length === 0) {
             logger.fatal(`${this.LOG_ID} asteria processing error: no streaming process is defined`);
-            throw new asteria_gaia_1.AsteriaException(asteria_gaia_1.AsteriaErrorCode.INVALID_PARAMETER, 'No streaming process is defined!');
+            throw new asteria_gaia_1.AsteriaException(asteria_gaia_1.AsteriaErrorCode.PROCESS_FAILURE, 'No streaming process is defined!');
         }
         logger.info(`${this.LOG_ID} streaming ${length} process${length !== 1 ? 'es' : asteria_gaia_1.CommonChar.EMPTY}`);
         let i = 0;

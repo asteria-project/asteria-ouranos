@@ -1,9 +1,11 @@
-import { StreamProcessBuilder, StreamProcessConfig, StreamProcess, AbstractAsteriaObject } from 'asteria-gaia';
+import { StreamProcessBuilder, StreamProcessConfig, StreamProcess, AbstractAsteriaObject, AsteriaObject } from 'asteria-gaia';
+
+// TODO: StreamProcessBuilder should implement AsteriaObject
 
 /**
  * The default implementation of the <code>StreamProcessBuilder</code> interface.
  */
-export class OuranosProcessBuilder extends AbstractAsteriaObject implements StreamProcessBuilder {
+export class OuranosProcessBuilder extends AbstractAsteriaObject implements StreamProcessBuilder, AsteriaObject {
 
     /**
      * Stores the static reference to this singleton.
@@ -14,7 +16,7 @@ export class OuranosProcessBuilder extends AbstractAsteriaObject implements Stre
      * Create a new <code>FileLoaderProcess</code> instance.
      */
     private constructor() {
-        super('com.asteria.cronos.util::OuranosProcessBuilder');
+        super('com.asteria.ouranos.util.builder::OuranosProcessBuilder');
     }
 
     /**

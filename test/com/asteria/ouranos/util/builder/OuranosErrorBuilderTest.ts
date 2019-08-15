@@ -9,7 +9,7 @@ import { OuranosErrorBuilder } from '../../../../../../src/com/asteria/ouranos/u
 import * as utils from '../../../../../../utils/test-utils/utilities/OuranosErrorBuilderTestUtils';
 
 // Test:
-describe('Uuid class test', ()=> {
+describe('OuranosErrorBuilder class test', ()=> {
 
     describe('#getInstance()', ()=> {
         it('should return a OuranosErrorBuilder instance', ()=> {

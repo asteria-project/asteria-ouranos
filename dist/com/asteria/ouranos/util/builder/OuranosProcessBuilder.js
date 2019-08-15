@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const asteria_gaia_1 = require("asteria-gaia");
 class OuranosProcessBuilder extends asteria_gaia_1.AbstractAsteriaObject {
     constructor() {
-        super('com.asteria.cronos.util::OuranosProcessBuilder');
+        super('com.asteria.ouranos.util::OuranosProcessBuilder');
     }
     static getInstance() {
         return OuranosProcessBuilder._instance || (OuranosProcessBuilder._instance = new OuranosProcessBuilder());

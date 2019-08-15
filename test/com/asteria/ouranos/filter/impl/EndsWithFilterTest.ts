@@ -1,5 +1,5 @@
 import 'mocha';
-import { expect, assert } from 'chai';
+import { expect } from 'chai';
 
 // Class to test:
 import { EndsWithFilter } from '../../../../../../src/com/asteria/ouranos/filter/impl/EndsWithFilter';

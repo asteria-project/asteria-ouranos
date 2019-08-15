@@ -7,6 +7,7 @@ import { AsteriaContext } from 'asteria-gaia';
 
 // Utilities:
 import * as utils from '../../../../../utils/test-utils/utilities/OuranosSessionTestUtils';
+import * as guidUtils from '../../../../../utils/test-utils/utilities/GuidTestUtils';
 
 // Test:
 describe('OuranosSession class test', ()=> {
@@ -29,7 +30,7 @@ describe('OuranosSession class test', ()=> {
             const session: OuranosSession = new OuranosSession(utils.SESSION_CONFIG);
             const context: AsteriaContext = session.getContext();
             const guid: string = context.getId();
-            expect(utils.V4_REGEXP.test(guid)).to.be.true;
+            expect(guidUtils.V4_REGEXP.test(guid)).to.be.true;
         });
     });
 });

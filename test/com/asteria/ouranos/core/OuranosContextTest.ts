@@ -1,10 +1,10 @@
 import 'mocha';
 import { expect } from 'chai';
+import { OuranosLogger } from '../../../../../src/com/asteria/ouranos/util/logging/OuranosLogger';
+import { OuranosProcessor } from '../../../../../src/com/asteria/ouranos/process/OuranosProcessor';
 
 // Class to test:
 import { OuranosContext } from '../../../../../src/com/asteria/ouranos/core/OuranosContext';
-import { OuranosLogger } from '../../../../../src/com/asteria/ouranos/util/logging/OuranosLogger';
-import { OuranosProcessor } from '../../../../../src/com/asteria/ouranos/process/OuranosProcessor';
 
 // Utilities:
 import * as utils from '../../../../../utils/test-utils/utilities/OuranosContextTestUtils';

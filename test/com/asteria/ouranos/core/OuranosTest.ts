@@ -1,10 +1,10 @@
 import 'mocha';
 import { expect, assert } from 'chai';
+import { OuranosSession } from '../../../../../src/com/asteria/ouranos/core/OuranosSession';
+import { StreamProcess,  AsteriaException, AsteriaSession } from 'asteria-gaia';
 
 // Class to test:
 import { Ouranos } from '../../../../../src/com/asteria/ouranos/core/Ouranos';
-import { OuranosSession } from '../../../../../src/com/asteria/ouranos/core/OuranosSession';
-import { StreamProcess,  AsteriaException, AsteriaSession } from 'asteria-gaia';
 
 // Utilities:
 import * as utils from '../../../../../utils/test-utils/utilities/OuranosTestUtils';

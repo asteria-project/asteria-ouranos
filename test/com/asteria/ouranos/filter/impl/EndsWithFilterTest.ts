@@ -1,5 +1,6 @@
 import 'mocha';
 import { expect } from 'chai';
+import { FilterOperator } from 'asteria-gaia';
 
 // Class to test:
 import { EndsWithFilter } from '../../../../../../src/com/asteria/ouranos/filter/impl/EndsWithFilter';
@@ -14,6 +15,15 @@ describe('EndsWithFilter class test', ()=> {
         it('should return the EndsWithFilter full qualified class name', ()=> {
             const filter: EndsWithFilter = new EndsWithFilter();
             expect(filter.getClassName()).to.equal(utils.CLASS_NAME);
+        });
+    });
+
+    describe('#operators', ()=> {
+        it('should return an array that contains only a reference to FilterOperator.ENDS_WITH', ()=> {
+            const filter: EndsWithFilter = new EndsWithFilter();
+            const operators: Array<any> = filter.operators;
+            expect(operators).to.have.lengthOf(1);
+            expect(operators.indexOf(FilterOperator.ENDS_WITH)).to.not.equal(-1);
         });
     });
 

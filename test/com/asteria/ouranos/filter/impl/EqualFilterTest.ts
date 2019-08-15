@@ -1,5 +1,6 @@
 import 'mocha';
 import { expect } from 'chai';
+import { FilterOperator, FilterOperatorNotation } from 'asteria-gaia';
 
 // Class to test:
 import { EqualFilter } from '../../../../../../src/com/asteria/ouranos/filter/impl/EqualFilter';
@@ -14,6 +15,16 @@ describe('EqualFilter class test', ()=> {
         it('should return the EqualFilter full qualified class name', ()=> {
             const filter: EqualFilter = new EqualFilter();
             expect(filter.getClassName()).to.equal(utils.CLASS_NAME);
+        });
+    });
+
+    describe('#operators', ()=> {
+        it('should return an array that contains reference to FilterOperator.EQUAL and FilterOperatorNotation.EQUAL', ()=> {
+            const filter: EqualFilter = new EqualFilter();
+            const operators: Array<any> = filter.operators;
+            expect(operators).to.have.lengthOf(2);
+            expect(operators.indexOf(FilterOperator.EQUAL)).to.not.equal(-1);
+            expect(operators.indexOf(FilterOperatorNotation.EQUAL)).to.not.equal(-1);
         });
     });
 

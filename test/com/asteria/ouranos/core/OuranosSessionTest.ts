@@ -1,9 +1,9 @@
 import 'mocha';
 import { expect } from 'chai';
+import { AsteriaContext } from 'asteria-gaia';
 
 // Class to test:
 import { OuranosSession } from '../../../../../src/com/asteria/ouranos/core/OuranosSession';
-import { AsteriaContext } from 'asteria-gaia';
 
 // Utilities:
 import * as utils from '../../../../../utils/test-utils/utilities/OuranosSessionTestUtils';

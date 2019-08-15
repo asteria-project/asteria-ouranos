@@ -21,6 +21,9 @@ class OuranosProcessor extends asteria_gaia_1.AbstractAsteriaObject {
         this.PROCESSES.splice(this.getProcessIndex(process), 1);
         return this;
     }
+    size() {
+        return this.PROCESSES.length;
+    }
     run() {
         this._timestamp = Date.now();
         const logger = this.CONTEXT.getLogger();

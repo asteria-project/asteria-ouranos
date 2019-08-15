@@ -1,10 +1,10 @@
 import { StreamProcess, StreamProcessType, AsteriaStream, AsteriaContext } from 'asteria-gaia';
-import { TestStream } from './TestStream';
+import { TestReadableStream } from './TestReadableStream';
 
 /**
- * A basic stream process that is used for unit testing.
+ * A readable stream process that is used for unit testing.
  */
-export class StreamProcessImpl implements StreamProcess {
+export class ReadableStreamProcessImpl implements StreamProcess {
     
     /**
      * The config object for this process.
@@ -20,7 +20,7 @@ export class StreamProcessImpl implements StreamProcess {
      * @implements
      */
     public getClassName(): string {
-        return 'StreamProcessImpl';
+        return 'ReadableStreamProcessImpl';
     }
 
     /**
@@ -41,14 +41,14 @@ export class StreamProcessImpl implements StreamProcess {
      * @implements
      */
     public getType(): StreamProcessType {
-        return StreamProcessType.TRANSFORM;
+        return StreamProcessType.READABLE;
     }
 
     /**
      * @implements
      */
     public create(context: AsteriaContext): AsteriaStream {
-        const stream: AsteriaStream = new TestStream();
+        const stream: AsteriaStream = new TestReadableStream();
         stream.init(this._config, context);
         return stream;
     }

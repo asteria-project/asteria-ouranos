@@ -24,7 +24,7 @@ class Ouranos extends asteria_gaia_1.AbstractAsteriaObject {
         }
         else {
             const name = config.name;
-            if (config === null || config === undefined) {
+            if (name === null || name === undefined) {
                 error = OuranosErrorBuilder_1.OuranosErrorBuilder.getInstance().build(asteria_gaia_1.AsteriaErrorCode.MISSING_SESSION_NAME, Ouranos.CLASS_NAME, 'no session session name is specified');
                 OuranosLogger_1.OuranosLogger.getLogger().fatal(error.toString());
             }

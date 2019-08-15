@@ -60,6 +60,13 @@ export class OuranosProcessor extends AbstractAsteriaObject implements StreamPro
     /**
      * @inheritdoc
      */
+    public size(): number {
+        return this.PROCESSES.length;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public run(): AsteriaStream {
         this._timestamp = Date.now();
         const logger: AsteriaLogger = this.CONTEXT.getLogger();

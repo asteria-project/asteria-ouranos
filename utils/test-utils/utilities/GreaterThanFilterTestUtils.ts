@@ -7,6 +7,6 @@ export const CLASS_NAME: string = 'com.asteria.ouranos.filter.impl::GreaterThanF
 export const OBJ: any = {
     nullProp: null,
     invalidProp: 1,
-    validProp: 5,
+    validProp: 5
 }
 export const VALUE: any = 3;

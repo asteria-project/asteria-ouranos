@@ -7,6 +7,6 @@ export const CLASS_NAME: string = 'com.asteria.ouranos.filter.impl::EndsWithFilt
 export const OBJ: any = {
     nullProp: null,
     invalidProp: 'invalidPropKO',
-    validProp: 'validPropOK',
+    validProp: 'validPropOK'
 }
 export const VALUE: any = 'OK';

@@ -39,7 +39,7 @@ describe('GreaterThanFilter class test', ()=> {
             expect(filter.apply(utils.OBJ, 'noopProp', utils.VALUE)).to.be.false;
         });
         
-        it('should return false when property is lower than the specified value', ()=> {
+        it('should return false when property is greater than the specified value', ()=> {
             const filter: GreaterThanFilter = new GreaterThanFilter();
             expect(filter.apply(utils.OBJ, 'invalidProp', utils.VALUE)).to.be.false;
         });

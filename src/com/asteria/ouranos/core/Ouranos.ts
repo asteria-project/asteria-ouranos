@@ -61,7 +61,7 @@ export class Ouranos extends AbstractAsteriaObject {
             OuranosLogger.getLogger().fatal(error.toString());
         } else {
             const name: any = config.name;
-            if (config === null || config === undefined) {
+            if (name === null || name === undefined) {
                 error = OuranosErrorBuilder.getInstance().build(
                     AsteriaErrorCode.MISSING_SESSION_NAME,
                     Ouranos.CLASS_NAME,

@@ -3,12 +3,12 @@ import { expect, assert } from 'chai';
 
 // Class to test:
 import { Ouranos } from '../../../../../src/com/asteria/ouranos/core/Ouranos';
+import { OuranosSession } from '../../../../../src/com/asteria/ouranos/core/OuranosSession';
 import { StreamProcess,  AsteriaException, AsteriaSession } from 'asteria-gaia';
 
 // Utilities:
 import * as utils from '../../../../../utils/test-utils/utilities/OuranosTestUtils';
 import { StreamProcessImpl } from '../../../../../utils/test-utils/classes/StreamProcessImpl';
-import { OuranosSession } from '../../../../../src/com/asteria/ouranos.index';
 
 // Test:
 describe('Ouranos class test', ()=> {

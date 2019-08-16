@@ -1,6 +1,6 @@
 {
   "name": "asteria-ouranos",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Ouranos is the default implementation of the Asteria Project for JavaScript implementations.",
   "main": "dist/com/asteria/ouranos.index.js",
   "types": "types/ouranos.d.ts",
@@ -12,7 +12,7 @@
   },
   "homepage": "https://github.com/asteria-ouranos/asteria-ouranos#readme",
   "dependencies": {
-    "asteria-gaia": "^0.6.1",
+    "asteria-gaia": "^0.6.2",
     "ts-log-debug": "^5.1.0",
     "uuid": "^3.3.2"
   },

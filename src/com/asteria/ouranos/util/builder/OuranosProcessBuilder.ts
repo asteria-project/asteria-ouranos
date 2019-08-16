@@ -1,11 +1,9 @@
-import { StreamProcessBuilder, StreamProcessConfig, StreamProcess, AbstractAsteriaObject, AsteriaObject } from 'asteria-gaia';
-
-// TODO: StreamProcessBuilder should implement AsteriaObject
+import { StreamProcessBuilder, StreamProcessConfig, StreamProcess, AbstractAsteriaObject } from 'asteria-gaia';
 
 /**
  * The default implementation of the <code>StreamProcessBuilder</code> interface.
  */
-export class OuranosProcessBuilder extends AbstractAsteriaObject implements StreamProcessBuilder, AsteriaObject {
+export class OuranosProcessBuilder extends AbstractAsteriaObject implements StreamProcessBuilder {
 
     /**
      * Stores the static reference to this singleton.

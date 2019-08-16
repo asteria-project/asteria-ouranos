@@ -27,7 +27,7 @@ describe('OuranosLogger class test', ()=> {
 
     describe('#getClassName()', ()=> {
         it('should return the OuranosLogger fully qualified class name', ()=> {
-            const logger: OuranosLogger = (OuranosLogger.getLogger() as OuranosLogger);
+            const logger: AsteriaLogger = OuranosLogger.getLogger();
             expect(logger.getClassName()).to.equal(utils.CLASS_NAME);
         });
     });

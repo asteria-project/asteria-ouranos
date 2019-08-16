@@ -28,7 +28,7 @@ describe('OuranosProcessBuilder class test', ()=> {
     describe('#getClassName()', ()=> {
         it('should return the OuranosProcessBuilder fully qualified class name', ()=> {
             const builder: StreamProcessBuilder = OuranosProcessBuilder.getInstance();
-            expect((builder as OuranosProcessBuilder).getClassName()).to.equal(utils.CLASS_NAME);
+            expect(builder.getClassName()).to.equal(utils.CLASS_NAME);
         });
     });
     
